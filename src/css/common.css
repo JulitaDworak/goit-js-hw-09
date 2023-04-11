@@ -10,9 +10,66 @@ body {
   background-color: #fafafa;
   color: #212121;
   line-height: 1.5;
+
+
 }
 
 img {
   display: block;
   max-width: 100%;
+}
+
+
+input {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+align-items: center;
+  padding: 12px;
+  font-size: 20px;
+  margin-bottom: 20px;
+  margin-left: 0;
+  width: 20%
+}
+
+button{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 12px;
+  font-size: 20px;
+  margin-bottom: 20px;
+  margin-left: 0;
+  align-items: center;
+justify-content: center;
+width: 20%
+}
+
+.timer{
+  display: flex;
+  column-gap: 60px;
+align-items: center;
+justify-content: center;
+padding: 100px;
+background-image: url('https://cdn.pixabay.com/photo/2019/06/07/10/44/rocks-4257963_960_720.jpg');
+background-position: center;
+}
+
+.field{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+justify-content: center;
+padding: 30px;
+background-color: beige;
+
+
+}
+
+.value {
+  font-size: 70px;
+}
+
+.label{
+  font-size: 20px;
 }

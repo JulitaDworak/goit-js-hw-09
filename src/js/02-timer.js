@@ -1,6 +1,6 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
-
+import Notiflix from 'notiflix';
 
 const inputData = document.getElementById('datetime-picker')
 const daysToGo = document.querySelector('[data-days]')
@@ -34,16 +34,13 @@ const convertMs = ms => {
 };
 
 // add 0 before 
-const addLeadingZero = (value) => {
-if (value<10) {
-  return value.toString().padStart(2,'0');
-return value}
+const addLeadingZero = value => {
+if (value<10)
+return value.toString().padStart(2,'0');
+return value;
 }
 
-
-
-
-
+// wywolanie zdarzenia na koniec odliczania
 const endCount = () => {
   clearInterval(countDown)
   daysToGo.textContent = "00"
@@ -53,7 +50,7 @@ const endCount = () => {
 }
 
 
-
+// podstawienie czasu do spanów 
 const updateTimeToGo = () => {
 timeToGo = convertMs(milisecondsLeft);
 daysToGo.textContent = addLeadingZero(timeToGo.days)
@@ -63,7 +60,7 @@ secondsToGo.textContent = addLeadingZero(timeToGo.seconds)
 milisecondsLeft -= 1000;
 if (milisecondsLeft <0) {
   endCount();
-  return "koniec odliczania"
+  Notiflix.Report.success('Countdown ended!')
 }
 }
 
@@ -76,12 +73,14 @@ const options = {
     calendarData = selectedDates[0].getTime();
     milisecondsLeft = calendarData - new Date().getTime();
     if (milisecondsLeft<0) {
-      return window.alert('Please choose a date in the future')
+      return Notiflix.Report.failure(
+        'Please choose a date in the future')
     }
     else {updateTimeToGo()}
-
+    
     startBtn.disable = false
-  },
+    console.log(calendarData);
+},
 };
 
 flatpickr(inputData, options);

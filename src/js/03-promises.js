@@ -20,7 +20,7 @@ resolve(` Fulfilled promise ${position} in ${delay}ms`)
     reject(`Rejected promise ${position} in ${delay}ms`)
     // Reject
   }
-  }, delay.value)
+  }, delay)
 })
 }
 
@@ -28,14 +28,14 @@ resolve(` Fulfilled promise ${position} in ${delay}ms`)
 const showPromise=()=> {
 let delayTime = 0
 for (let i =1; i<=amount.value; i++) {
-  createPromise(i, delay)
+  createPromise(i, delayTime)
   .then(success => {
     Notiflix.Notify.success(success);
   })
   .catch(error => {
     Notiflix.Notify.failure(error);
   });
-delayTime = (+delay.value) + (+step.value);
+delayTime = (delayTime) + (+step.value);
 }
 }
 
